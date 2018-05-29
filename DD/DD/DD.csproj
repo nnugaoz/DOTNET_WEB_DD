@@ -51,6 +51,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -117,15 +119,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="DDDB.Context.cs">
+    <Compile Include="EF\DD_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DDDB.Context.tt</DependentUpon>
+      <DependentUpon>DD_DB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DDDB.cs">
+    <Compile Include="EF\DD_DB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DDDB.tt</DependentUpon>
+      <DependentUpon>DD_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\DD_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DD_DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\T_User.cs">
+      <DependentUpon>DD_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,17 +189,28 @@
     <Content Include="Views\Login\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DDDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DDDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DDDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DDDB.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <EntityDeploy Include="EF\DD_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DD_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF\DD_DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DD_DB.edmx</DependentUpon>
+      <LastGenOutput>DD_DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\DD_DB.edmx.diagram">
+      <DependentUpon>DD_DB.edmx</DependentUpon>
+    </Content>
+    <Content Include="EF\DD_DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DD_DB.edmx</DependentUpon>
+      <LastGenOutput>DD_DB.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
