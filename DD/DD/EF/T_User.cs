@@ -17,7 +17,7 @@ namespace DD.EF
         public string ID { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public Nullable<System.DateTime> EditTime { get; set; }
+        public System.DateTime EditTime { get; set; }
         public string EditMan { get; set; }
     }
 }

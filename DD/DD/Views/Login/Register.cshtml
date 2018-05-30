@@ -9,23 +9,121 @@
     <meta name="viewport" content="width=device-width" />
     <title>用户注册</title>
     <link type="text/css" href="../../js/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../js/jquery/jquery-3.3.1.min.js"></script>
+
+    <style type="text/css">
+        .form-horizontal .form-group {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#btnRegister').click(btnRegister_Click);
+        });
+
+        function Check()
+        {
+            return CheckInput();
+        }
+
+        function CheckInput()
+        {
+            var lRet = true;
+
+            $('#divTxtUserName>span').remove();
+            $('#divUserName').removeClass("has-error has-feedback");
+            $('#divUserNameTip').html('');
+
+            $('#divTxtPassword>span').remove();
+            $('#divPassword').removeClass("has-error has-feedback");
+            $('#divPasswordTip').html('');
+
+            $('#divTxtPasswordConfirm>span').remove();
+            $('#divPasswordConfirm').removeClass("has-error has-feedback");
+            $('#divPasswordConfirmTip').html('');
+
+            //判断必输项是否为空
+            if ($('#txtUserName').val() == "") {
+                $('#divTxtUserName').append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
+                $('#divUserName').addClass("has-error has-feedback");
+                $('#divUserNameTip').html('<span class="help-block">请输入用户名</span>');
+                lRet = false;
+            }
+
+            if ($('#txtPassword').val() == "") {
+                $('#divTxtPassword').append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
+                $('#divPassword').addClass("has-error has-feedback");
+                $('#divPasswordTip').html('<span class="help-block">请输入密码</span>');
+                lRet = false;
+            }
+
+            if ($('#txtPasswordConfirm').val() == "") {
+                $('#divTxtPasswordConfirm').append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
+                $('#divPasswordConfirm').addClass("has-error has-feedback");
+                $('#divPasswordConfirmTip').html('<span class="help-block">请输入确认密码</span>');
+                lRet = false;
+            }
+
+            return lRet;
+        }
+
+        function CheckPasswordConfirm()
+        {
+            if ($('#txtPasswordConfirm').val() == $('#txtPassword').val()) {
+                $('#divTxtPasswordConfirm').append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
+                $('#divPasswordConfirm').addClass("has-error has-feedback");
+                $('#divPasswordConfirmTip').html('<span class="help-block">请输入确认密码</span>');
+            }
+        }
+
+        function btnRegister_Click() {
+
+           
+        }
+    </script>
 </head>
 <body>
     <div>
-        <form role="form">
-            <div class="form-group">
-                <label for="txtUserName">用户名</label>
-                <input type="text" class="form-control" id="txtUserName" />
+        <form class="form-horizontal">
+            <div class="form-group" id="divUserName">
+                <label for="txtUserName" class="col-md-2 control-label" id="lblUserName">用户名</label>
+                <div class="col-md-4" id="divTxtUserName">
+                    <input type="text" class="form-control" id="txtUserName" />
+                </div>
+                <div class="col-md-6" id="divUserNameTip">
+
+                </div>
             </div>
-            <div class="form-group">
-                <label for="txtPassword">密码</label>
-                <input type="password" class="form-control" id="txtPassword" />
+
+            <div class="form-group" id="divPassword">
+                <label for="txtPassword" class="col-md-2 control-label" id="lblPassword">密码</label>
+                <div class="col-md-4" id="divTxtPassword">
+                    <input type="password" class="form-control" id="txtPassword" />
+                </div>
+                <div class="col-md-6" id="divPasswordTip">
+
+                </div>
             </div>
-            <div class="form-group">
-                <label for="txtPasswordConfirm">确认密码</label>
-                <input type="password" class="form-control" id="txtPasswordConfirm" />
+
+            <div class="form-group" id="divPasswordConfirm">
+                <label for="txtPasswordConfirm" class="col-md-2 control-label" id="lblPasswordConfirm">确认密码</label>
+                <div class="col-md-4" id="divTxtPasswordConfirm">
+                    <input type="password" class="form-control" id="txtPasswordConfirm" />
+                </div>
+                <div class="col-md-6" id="divPasswordConfirmTip">
+
+                </div>
             </div>
-            <button type="button" id="btnRegister" class="btn btn-primary">注册</button>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="button" id="btnRegister" class="btn btn-primary">
+                        注册
+                    </button>
+                </div>
+            </div>
         </form>
     </div>
 </body>
